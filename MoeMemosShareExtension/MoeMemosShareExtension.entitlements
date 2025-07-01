@@ -4,11 +4,7 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.me.mudkip.MoeMemos</string>
-	</array>
-	<key>keychain-access-groups</key>
-	<array>
-		<string>$(AppIdentifierPrefix)me.mudkip.MoeMemos</string>
+		<string>group.me.timberline.memos</string>
 	</array>
 </dict>
 </plist>
