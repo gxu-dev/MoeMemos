@@ -75,10 +75,10 @@ struct ArchivedMemoCard: View {
         } label: {
             Label("memo.restore", systemImage: "tray.and.arrow.up")
         }
-        Button(role: .destructive, action: {
-            showingDeleteConfirmation = true
-        }, label: {
-            Label("memo.delete", systemImage: "trash")
-        })
+//        Button(role: .destructive, action: {
+//            showingDeleteConfirmation = true
+//        }, label: {
+//            Label("memo.delete", systemImage: "trash")
+//        })
     }
 }

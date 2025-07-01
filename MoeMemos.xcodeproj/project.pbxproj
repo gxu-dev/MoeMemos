@@ -975,7 +975,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MoeMemos/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TimberlineMemos;
+				INFOPLIST_KEY_CFBundleDisplayName = " Memos";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Capture photos and attach to memos";
@@ -1016,7 +1016,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MoeMemos/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TimberlineMemos;
+				INFOPLIST_KEY_CFBundleDisplayName = " Memos";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Capture photos and attach to memos";
