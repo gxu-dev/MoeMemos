@@ -12,8 +12,8 @@ import SwiftData
 import Factory
 
 @Observable public class AppInfo {
-    public static let groupContainerIdentifier = "group.me.timberline.memos"
-    public static let keychainAccessGroupName = "AHAQ4D2466.me.timberline.memos"
+    public static let groupContainerIdentifier = "group.me.timberline.Memos"
+    public static let keychainAccessGroupName = "UCRLXVUDCF.me.timberline.Memos"
     
     @ObservationIgnored public let modelContext: ModelContext
     
