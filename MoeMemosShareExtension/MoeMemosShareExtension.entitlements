@@ -4,11 +4,11 @@
 <dict>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)me.timberline.Memos</string>
+		<string>$(AppIdentifierPrefix)me.timberline.memos</string>
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.me.timberline.Memos</string>
+		<string>group.me.timberline.memos</string>
 	</array>
 </dict>
 </plist>
