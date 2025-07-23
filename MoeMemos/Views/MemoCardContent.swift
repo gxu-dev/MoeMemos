@@ -31,33 +31,65 @@ struct MemoCardContent: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(AccountManager.self) private var memosManager: AccountManager
     
+    @State private var isExpanded = false
+    
+    let maxLines: Int = 10;
+    
+    private var shouldShowToggleButton: Bool {
+        memo.content.count > 400
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
-            MarkdownView(memo.content)
-                .markdownImageProvider(.lazyImage(aspectRatio: 4 / 3))
-                .markdownCodeSyntaxHighlighter(colorScheme == .dark ? .dark() : .light())
-                .markdownTaskListMarker(BlockStyle { configuration in
-                    Image(systemName: configuration.isCompleted ? "checkmark.square.fill" : "square")
-                        .symbolRenderingMode(.hierarchical)
-                        .imageScale(.medium)
-                        .relativeFrame(minWidth: .em(1), alignment: .leading)
-                        .onTapGesture {
-                            Task {
-                                await toggleTaskItem?(configuration)
+            if isExpanded {
+                MarkdownView(memo.content)
+                    .markdownImageProvider(.lazyImage(aspectRatio: 4 / 3))
+                    .markdownCodeSyntaxHighlighter(colorScheme == .dark ? .dark() : .light())
+                    .markdownTaskListMarker(BlockStyle { configuration in
+                        Image(systemName: configuration.isCompleted ? "checkmark.square.fill" : "square")
+                            .symbolRenderingMode(.hierarchical)
+                            .imageScale(.medium)
+                            .relativeFrame(minWidth: .em(1), alignment: .leading)
+                            .onTapGesture {
+                                Task {
+                                    await toggleTaskItem?(configuration)
+                                }
                             }
-                        }
-                })
+                    })
+            } else {
+                Text(memo.content)
+                    .font(.body)
+                    .foregroundColor(.primary)
+                    .lineLimit(maxLines)
+                    .truncationMode(.tail)
+            }
             
-            ForEach(resources()) { content in
-                if case let .images(urls) = content {
-                    MemoCardImageView(images: urls)
+            if shouldShowToggleButton {
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        withAnimation {
+                            isExpanded.toggle()
+                        }
+                    }) {
+                        Text(isExpanded ? "Show Less" : "Show More")
+                            .font(.caption)
+                            .fontWeight(.medium)
+                            .foregroundColor(.accentColor)
+                    }
                 }
-                if case let .attachment(resource) = content {
-                    Attachment(resource: resource)
+            }
+            
+                ForEach(resources()) { content in
+                    if case let .images(urls) = content {
+                        MemoCardImageView(images: urls)
+                    }
+                    if case let .attachment(resource) = content {
+                        Attachment(resource: resource)
+                    }
                 }
             }
         }
-    }
     
     private func resources() -> [MemoResource] {
         var attachments = [MemoResource]()
